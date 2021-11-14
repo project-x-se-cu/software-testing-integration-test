@@ -92,7 +92,7 @@ class billpayment {
                 $updatedBalance = $arrayAccount['accBalance'] - $arrayAccount[$accChargeType];
                 try {
                     $this->saveTransaction( $this->accNo, $updatedBalance );
-                    $this->saveChargeTransaction( $this->accNo, $bill_type );
+                    // $this->saveChargeTransaction( $this->accNo, $bill_type );
 
                     $response = $this->getAccountDetail( $this->accNo );
                     $response['isError'] = false;
