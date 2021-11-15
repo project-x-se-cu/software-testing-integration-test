@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2021 at 04:43 AM
+-- Generation Time: Nov 14, 2021 at 06:59 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -42,7 +42,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`no`, `pin`, `name`, `balance`, `waterCharge`, `electricCharge`, `phoneCharge`) VALUES
-('1111111111', '1111', 'Testing Group 2', 10000, 20, 20, 20);
+('1234567890', '1234', 'Testing Group 2', 1000000000, 20, 20, 20),
+('0987654321', '4321', 'Not enough', 500, 20, 20, 20);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

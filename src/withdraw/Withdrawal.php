@@ -1,23 +1,17 @@
 <?php namespace Operation;
 
 require_once __DIR__.'./../serviceauthentication/DBConnection.php';
-require_once 'StubWithdrawal.php';
 require_once __DIR__.'./../serviceauthentication/serviceauthentication.php';
 
 use DBConnection;
 use AccountInformationException;
-use Stub\StubWithdrawal;
 use ServiceAuthentication;
 
-final class Withdrawal {
+class Withdrawal {
     private $accNo;
 
     public function __construct(string $accNo){
         $this->accNo = $accNo;
-    }
-
-    public function DriverMain(int $amount) {
-        return Withdrawal::withdraw($amount);
     }
 
     public function withdraw(string $amount) {
@@ -43,26 +37,17 @@ final class Withdrawal {
                 $response["message"] = "ยอดเงินที่ต้องการถอนต้องไม่เกิน 50,000 บาทต่อรายการ";
             }
             else{
-                // Real
-                $auth = ServiceAuthentication::accountAuthenticationProvider($this->accNo);
-                // Stub
-                // $auth = StubWithdrawal::serviceAuthentication($this->accNo);
+                $auth = $this->accountAuthenticationProvider($this->accNo);
                 if ($auth["accBalance"] - $amount >= 0) {
                     $response = array("accNo" => $this->accNo, "accName" => $auth["accName"], "accBalance" => $auth["accBalance"] - $amount, "isError" => false);
                 } else {
                     $response = array("isError" => true, "message" => "ยอดเงินในบัญชีไม่เพียงพอ");
                 }
                 if(!$response["isError"]) {
-                    // Real
-                   if(!DBConnection::saveTransaction($this->accNo, $response["accBalance"])) {
+                   if(!$this->saveTransaction($this->accNo, $response["accBalance"])) {
                        $response["message"] = "ไม่สามารถปรับปรุงยอดเงินได้";
                        $response["isError"] = true;
                    }
-                    // Stub
-                    // if(!StubWithdrawal::saveTransaction($this->accNo, $response["accBalance"])) {
-                    //     $response["message"] = "ไม่สามารถปรับปรุงยอดเงินได้";
-                    //     $response["isError"] = true;
-                    // }
                 }
             }
         }
@@ -73,5 +58,13 @@ final class Withdrawal {
         }
 
         return $response;
+    }
+
+    public function accountAuthenticationProvider(string $accNo) {
+        return ServiceAuthentication::accountAuthenticationProvider($accNo);
+    }
+
+    public function saveTransaction(string $accNo, int $accBalance) {
+        return DBConnection::saveTransaction($accNo, $accBalance);
     }
 }
