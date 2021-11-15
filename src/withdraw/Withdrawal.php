@@ -38,7 +38,10 @@ class Withdrawal {
             }
             else{
                 $auth = $this->accountAuthenticationProvider($this->accNo);
-                if ($auth["accBalance"] - $amount >= 0) {
+                if($auth["accNo"] == ''){
+                    $response = array("isError" => true, "message" => ("Account number : " . $this->accNo . " not found."));
+                }
+                else if ($auth["accBalance"] - $amount >= 0) {
                     $response = array("accNo" => $this->accNo, "accName" => $auth["accName"], "accBalance" => $auth["accBalance"] - $amount, "isError" => false);
                 } else {
                     $response = array("isError" => true, "message" => "ยอดเงินในบัญชีไม่เพียงพอ");
