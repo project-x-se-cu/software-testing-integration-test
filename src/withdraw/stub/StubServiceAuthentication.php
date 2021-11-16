@@ -17,21 +17,14 @@ class StubServiceAuthentication {
             return array (
             'accNo' => '1234567890',
             'accName' => 'Testing Group 2',
-            'accBalance' => 1000000000,
+            'accBalance' => 1000,
             'accWaterCharge' => 20,
             'accElectricCharge' => 20,
             'accPhoneCharge' => 20
             );
         }
         else {
-            return array (
-            'accNo' => '',
-            'accName' => '',
-            'accBalance' => 0,
-            'accWaterCharge' => 0,
-            'accElectricCharge' => 0,
-            'accPhoneCharge' => 0
-            );
+            throw new AccountInformationException("Account number : {$accNo} not found.");
         }
     }
 }
