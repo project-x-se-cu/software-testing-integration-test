@@ -222,110 +222,115 @@ final class WithdrawalTest extends TestCase {
         $this->assertEquals($expectedResult, $actualResult);
     }
 
-    // function testcase15() {
-    //     // given
-    //     $driverMainStepOne = new DriverMainStepOne('1234567890');
-    //     $expectedResult = array (
-    //         'isError' => false,
-    //         'accNo' => '1234567890',
-    //         'accName' => 'Testing Group 2',
-    //         'accBalance' => 900
-    //     );
+    function testcase15() {
+        // given
+        $driverMainStepThree = new DriverMainStepThree('1234567890');
+        $expectedResult = array (
+            'isError' => false,
+            'accNo' => '1234567890',
+            'accName' => 'Testing Group 2',
+            'accBalance' => 900
+        );
 
-    //     // when
-    //     $actualResult = $driverMainStepThree->withdraw(100);
+        // when
+        $actualResult = $driverMainStepThree->withdraw(100);
 
-    //     // then
-    //     $this->assertEquals($expectedResult, $actualResult);
-    // }
+        // then
+        $this->assertEquals($expectedResult, $actualResult);
+        $this->resetTestData($driverMainStepThree);
+    }
 
-    // function testcase16() {
-    //     // given
-    //     $driverMainStepOne = new DriverMainStepOne('0987654321');
-    //     $expectedResult = array (
-    //         'isError' => true,
-    //         'message' => 'ยอดเงินในบัญชีไม่เพียงพอ'
-    //     );
+    function testcase16() {
+        // given
+        $driverMainStepThree = new DriverMainStepThree('0987654321');
+        $expectedResult = array (
+            'isError' => true,
+            'message' => 'ยอดเงินในบัญชีไม่เพียงพอ'
+        );
 
-    //     // when
-    //     $actualResult = $driverMainStepThree->withdraw(100);
+        // when
+        $actualResult = $driverMainStepThree->withdraw(100);
 
-    //     // then
-    //     $this->assertEquals($expectedResult, $actualResult);
-    // }
+        // then
+        $this->assertEquals($expectedResult, $actualResult);
+    }
 
-    // function testcase17() {
-    //     // given
-    //     $driverMainStepOne = new DriverMainStepOne('0000000000');
-    //     $expectedResult = array (
-    //         'isError' => true,
-    //         'message' => 'Account number : 0000000000 not found.'
-    //     );
+    function testcase17() {
+        // given
+        $driverMainStepThree = new DriverMainStepThree('0000000000');
+        $expectedResult = array (
+            'isError' => true,
+            'message' => 'Account number : 0000000000 not found.'
+        );
 
-    //     // when
-    //     $actualResult = $driverMainStepThree->withdraw(100);
+        // when
+        $actualResult = $driverMainStepThree->withdraw(100);
 
-    //     // then
-    //     $this->assertEquals($expectedResult, $actualResult);
-    // }
+        // then
+        $this->assertEquals($expectedResult, $actualResult);
+    }
 
-    // function testcase18() {
-    //     // given
-    //     $driverMainStepOne = new DriverMainStepOne('1234567890');
-    //     $expectedResult = array (
-    //         'isError' => true,
-    //         'message' => 'จำนวนเงินถอนต้องเป็นตัวเลขเท่านั้น'
-    //     );
+    function testcase18() {
+        // given
+        $driverMainStepThree = new DriverMainStepThree('1234567890');
+        $expectedResult = array (
+            'isError' => true,
+            'message' => 'จำนวนเงินถอนต้องเป็นตัวเลขเท่านั้น'
+        );
 
-    //     // when
-    //     $actualResult = $driverMainStepThree->withdraw('10a');
+        // when
+        $actualResult = $driverMainStepThree->withdraw('10a');
 
-    //     // then
-    //     $this->assertEquals($expectedResult, $actualResult);
-    // }
+        // then
+        $this->assertEquals($expectedResult, $actualResult);
+    }
 
-    // function testcase19() {
-    //     // given
-    //     $driverMainStepOne = new DriverMainStepOne('123456789');
-    //     $expectedResult = array (
-    //         'isError' => true,
-    //         'message' => 'หมายเลขบัญชีต้องมีครบทั้ง 10 หลัก'
-    //     );
+    function testcase19() {
+        // given
+        $driverMainStepThree = new DriverMainStepThree('123456789');
+        $expectedResult = array (
+            'isError' => true,
+            'message' => 'หมายเลขบัญชีต้องมีครบทั้ง 10 หลัก'
+        );
 
-    //     // when
-    //     $actualResult = $driverMainStepThree->withdraw('100');
+        // when
+        $actualResult = $driverMainStepThree->withdraw('100');
 
-    //     // then
-    //     $this->assertEquals($expectedResult, $actualResult);
-    // }
+        // then
+        $this->assertEquals($expectedResult, $actualResult);
+    }
 
-    // function testcase20() {
-    //     // given
-    //     $driverMainStepOne = new DriverMainStepOne('12345678901');
-    //     $expectedResult = array (
-    //         'isError' => true,
-    //         'message' => 'หมายเลขบัญชีต้องมีครบทั้ง 10 หลัก'
-    //     );
+    function testcase20() {
+        // given
+        $driverMainStepThree = new DriverMainStepThree('12345678901');
+        $expectedResult = array (
+            'isError' => true,
+            'message' => 'หมายเลขบัญชีต้องมีครบทั้ง 10 หลัก'
+        );
 
-    //     // when
-    //     $actualResult = $driverMainStepThree->withdraw('100');
+        // when
+        $actualResult = $driverMainStepThree->withdraw('100');
 
-    //     // then
-    //     $this->assertEquals($expectedResult, $actualResult);
-    // }
+        // then
+        $this->assertEquals($expectedResult, $actualResult);
+    }
 
-    // function testcase21() {
-    //     // given
-    //     $driverMainStepOne = new DriverMainStepOne('123456789a');
-    //     $expectedResult = array (
-    //         'isError' => true,
-    //         'message' => 'หมายเลขบัญชีต้องเป็นตัวเลขเท่านั้น'
-    //     );
+    function testcase21() {
+        // given
+        $driverMainStepThree = new DriverMainStepThree('123456789a');
+        $expectedResult = array (
+            'isError' => true,
+            'message' => 'หมายเลขบัญชีต้องเป็นตัวเลขเท่านั้น'
+        );
 
-    //     // when
-    //     $actualResult = $driverMainStepThree->withdraw('100');
+        // when
+        $actualResult = $driverMainStepThree->withdraw('100');
 
-    //     // then
-    //     $this->assertEquals($expectedResult, $actualResult);
-    // }
+        // then
+        $this->assertEquals($expectedResult, $actualResult);
+    }
+
+    function resetTestData($driverMainStepThree) {
+        $driverMainStepThree->saveTransaction('1234567890', 1000);
+    }
 }
